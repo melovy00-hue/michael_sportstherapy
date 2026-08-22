@@ -362,18 +362,37 @@
     @apply bg-white p-4 rounded-2xl border-2 border-slate-100 inline-block;
   }
 
+  /* Testimonials Carousel */
+  .testimonial-frame {
+    @apply bg-white rounded-2xl shadow-md border border-slate-100 overflow-hidden
+           flex items-center justify-center;
+    aspect-ratio: 4 / 5;
+  }
+
+  .testimonial-slide {
+    @apply w-full h-full object-contain;
+  }
+
+  .testimonial-arrow {
+    @apply flex-shrink-0 w-11 h-11 rounded-full bg-white
+           border border-slate-200 shadow-sm
+           flex items-center justify-center
+           text-slate-500 hover:text-primary-600 hover:border-primary-200
+           transition-all duration-200;
+  }
+
   /* Hero background: real photo when /hero.jpg exists, gradient fallback otherwise */
   .hero-bg {
     background-image: url('/hero.jpg'), linear-gradient(135deg, #0d9488 0%, #0a655e 45%, #1e293b 100%);
     background-size: cover;
-    background-position: center 20%;
+    background-position: center 40%;
   }
 
   /* Profile avatar: real photo when /profile.jpg exists, gradient initial fallback otherwise */
   .profile-avatar {
     background-image: url('/profile.jpg'), linear-gradient(135deg, #0d9488, #f97316);
     background-size: cover;
-    background-position: center 15%;
+    background-position: center 78%;
   }
 }
 

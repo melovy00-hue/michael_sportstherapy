@@ -229,24 +229,34 @@ export function renderApp(config: Config): string {
     <!-- Testimonials Section -->
     ${config.testimonials.length > 0 ? `
     <section id="testimonials" class="py-14 md:py-24 bg-slate-50/70 reveal">
-      <div class="max-w-3xl mx-auto px-4 sm:px-6">
+      <div class="max-w-md mx-auto px-4 sm:px-6">
         <div class="text-center mb-8 md:mb-12">
           <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-800 mb-3">
             מה אומרים המטופלים
           </h2>
         </div>
-        <div class="grid gap-6">
-          ${config.testimonials.map((t) => `
-            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-md border border-slate-100">
-              <div class="flex items-center gap-4 mb-4">
-                <div class="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold text-lg bg-gradient-to-br from-primary-500 to-accent-500">
-                  ${t.name.trim().charAt(0)}
-                </div>
-                <h4 class="font-semibold text-slate-800">${t.name}</h4>
-              </div>
-              <p class="text-slate-600 text-base leading-relaxed">${t.quote}</p>
-            </div>
-          `).join('')}
+        <div class="relative flex items-center gap-3">
+          ${config.testimonials.length > 1 ? `
+          <button id="testimonial-prev" class="testimonial-arrow" aria-label="ביקורת קודמת">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          ` : ''}
+
+          <div id="testimonial-track" class="testimonial-frame flex-1">
+            ${config.testimonials.map((t, i) => `
+              <img
+                src="${t.image}"
+                alt="ביקורת מאת ${t.name}"
+                class="testimonial-slide${i === 0 ? '' : ' hidden'}"
+              />
+            `).join('')}
+          </div>
+
+          ${config.testimonials.length > 1 ? `
+          <button id="testimonial-next" class="testimonial-arrow" aria-label="ביקורת הבאה">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+          ` : ''}
         </div>
       </div>
     </section>
