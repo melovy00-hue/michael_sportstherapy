@@ -366,7 +366,7 @@
   .hero-bg {
     background-image: url('/hero.jpg'), linear-gradient(135deg, #0d9488 0%, #0a655e 45%, #1e293b 100%);
     background-size: cover;
-    background-position: center 40%;
+    background-position: center 64%;
   }
 
   /* Profile avatar: real photo when /profile.jpg exists, gradient initial fallback otherwise */
