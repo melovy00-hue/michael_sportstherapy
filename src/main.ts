@@ -176,6 +176,59 @@ document.addEventListener('DOMContentLoaded', () => {
     contactObserver.observe(contactSection);
   }
 
+  // Treatment Gallery lightbox
+  const galleryButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('.gallery-item'));
+  const galleryModal = document.getElementById('gallery-modal');
+  const galleryModalMedia = document.getElementById('gallery-modal-media');
+  const galleryModalClose = document.getElementById('gallery-modal-close');
+  const galleryModalBackdrop = document.getElementById('gallery-modal-backdrop');
+  const galleryPrev = document.getElementById('gallery-prev');
+  const galleryNext = document.getElementById('gallery-next');
+  let galleryIndex = 0;
+
+  const renderGalleryMedia = (index: number) => {
+    if (!galleryModalMedia) return;
+    const btn = galleryButtons[index];
+    const type = btn.getAttribute('data-type');
+    const src = btn.getAttribute('data-src');
+    galleryModalMedia.innerHTML =
+      type === 'video'
+        ? `<video src="${src}" controls autoplay playsinline></video>`
+        : `<img src="${src}" alt="" />`;
+  };
+
+  const openGallery = (index: number) => {
+    galleryIndex = index;
+    renderGalleryMedia(galleryIndex);
+    galleryModal?.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    trackEvent('gallery_open', { label: String(index) });
+  };
+
+  const closeGallery = () => {
+    galleryModal?.classList.add('hidden');
+    if (galleryModalMedia) galleryModalMedia.innerHTML = '';
+    document.body.style.overflow = '';
+  };
+
+  galleryButtons.forEach((btn, i) => btn.addEventListener('click', () => openGallery(i)));
+  galleryPrev?.addEventListener('click', () => {
+    galleryIndex = (galleryIndex - 1 + galleryButtons.length) % galleryButtons.length;
+    renderGalleryMedia(galleryIndex);
+  });
+  galleryNext?.addEventListener('click', () => {
+    galleryIndex = (galleryIndex + 1) % galleryButtons.length;
+    renderGalleryMedia(galleryIndex);
+  });
+  galleryModalClose?.addEventListener('click', closeGallery);
+  galleryModalBackdrop?.addEventListener('click', closeGallery);
+  document.addEventListener('keydown', (e) => {
+    if (!galleryModal || galleryModal.classList.contains('hidden')) return;
+    if (e.key === 'Escape') closeGallery();
+    if (e.key === 'ArrowLeft') galleryPrev?.click();
+    if (e.key === 'ArrowRight') galleryNext?.click();
+  });
+
   // Intake form - build a WhatsApp message from the entered details
   const contactForm = document.getElementById('contact-form') as HTMLFormElement;
   if (contactForm) {

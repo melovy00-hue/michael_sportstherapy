@@ -224,6 +224,63 @@ export function renderApp(config: Config): string {
       </div>
     </section>
 
+    <!-- Gallery Section -->
+    ${config.galleryItems.length > 0 ? `
+    <section id="gallery" class="py-14 md:py-24 bg-white reveal">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-8 md:mb-12">
+          <span class="inline-block px-4 py-1.5 bg-primary-50 text-primary-600 text-sm font-medium rounded-full mb-4">
+            מהקליניקה
+          </span>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-800 mb-3">
+            גלריית טיפולים
+          </h2>
+          <p class="text-slate-500 text-base md:text-lg max-w-xl mx-auto">
+            תמונות וסרטונים אמיתיים מתוך טיפולים בקליניקה ובבית הלקוח
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
+          ${config.galleryItems.map((item, i) => `
+            <button
+              class="gallery-item"
+              data-gallery-index="${i}"
+              data-type="${item.type}"
+              data-src="${item.src}"
+              aria-label="${item.alt}"
+            >
+              <img src="${item.type === 'video' ? item.poster : item.src}" alt="${item.alt}" loading="lazy" />
+              ${item.type === 'video' ? `
+              <span class="gallery-play">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </span>
+              ` : ''}
+            </button>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Lightbox Modal -->
+    <div id="gallery-modal" class="gallery-modal hidden" role="dialog" aria-modal="true">
+      <div class="gallery-modal-backdrop" id="gallery-modal-backdrop"></div>
+      <div class="gallery-modal-content">
+        <button id="gallery-modal-close" class="gallery-modal-close" aria-label="סגור">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+        <div class="flex items-center gap-3">
+          <button id="gallery-prev" class="gallery-modal-nav" aria-label="הקודם">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <div id="gallery-modal-media" class="gallery-modal-media"></div>
+          <button id="gallery-next" class="gallery-modal-nav" aria-label="הבא">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    ` : ''}
+
     <!-- Testimonials Section -->
     ${config.testimonials.length > 0 ? `
     <section id="testimonials" class="py-14 md:py-24 bg-slate-50/70 reveal">

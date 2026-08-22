@@ -29,6 +29,13 @@ export interface Testimonial {
   quote: string;
 }
 
+export interface GalleryItem {
+  type: 'image' | 'video';
+  src: string;
+  poster?: string;
+  alt: string;
+}
+
 export interface Config {
   profile: {
     name: string;
@@ -45,6 +52,7 @@ export interface Config {
   socialLinks: SocialLink[];
   youtubeShorts: YouTubeShort[];
   testimonials: Testimonial[];
+  galleryItems: GalleryItem[];
   theme: {
     primaryColor: string;
     backgroundColor: string;
@@ -106,6 +114,20 @@ export const config: Config = {
     },
   ],
   youtubeShorts: [],
+  galleryItems: [
+    { type: "image", src: "/gallery/cupping-back.jpg", alt: "טיפול כוסות רוח לגב" },
+    { type: "video", src: "/videos/shoulder-rom-test.mp4", poster: "/gallery/shoulder-rom-test-poster.jpg", alt: "בדיקת טווח תנועה בכתף" },
+    { type: "image", src: "/gallery/kinesio-tape-shoulder.jpg", alt: "הדבקת קינזיותייפ בכתף" },
+    { type: "image", src: "/gallery/manual-therapy-lowback.jpg", alt: "טיפול ידני בגב תחתון" },
+    { type: "video", src: "/videos/straight-leg-stretch.mp4", poster: "/gallery/straight-leg-stretch-poster.jpg", alt: "מתיחת רגל ישרה" },
+    { type: "image", src: "/gallery/knee-to-chest-stretch.jpg", alt: "מתיחת ברך לחזה" },
+    { type: "image", src: "/gallery/neck-massage-homevisit.jpg", alt: "עיסוי צוואר בביקור בית" },
+    { type: "video", src: "/videos/cupping-back.mp4", poster: "/gallery/cupping-back-poster.jpg", alt: "הנחת כוסות רוח בגב" },
+    { type: "image", src: "/gallery/shoulder-assessment.jpg", alt: "בדיקת כתף בישיבה" },
+    { type: "image", src: "/gallery/lowback-rotation-stretch.jpg", alt: "מתיחת גב תחתון בסיבוב" },
+    { type: "video", src: "/videos/shoulder-tape.mp4", poster: "/gallery/shoulder-tape-poster.jpg", alt: "טייפינג לכתף" },
+    { type: "image", src: "/gallery/michael-clinic.jpg", alt: "מיכאל בקליניקה" },
+  ],
   testimonials: [
     {
       name: "מישל גרשקוביץ",
