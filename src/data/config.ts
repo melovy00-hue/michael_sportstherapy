@@ -26,7 +26,7 @@ export interface YouTubeShort {
 
 export interface Testimonial {
   name: string;
-  image: string;
+  quote: string;
 }
 
 export interface Config {
@@ -109,7 +109,7 @@ export const config: Config = {
   testimonials: [
     {
       name: "מישל גרשקוביץ",
-      image: "/testimonials/testimonial-1.jpg",
+      quote: "היום עשיתי אימון ראשון אחרי הטיפול וכבר הצלחתי לעלות במשקלים וכלל בלי כאב כמו לפני. הייתי קודם אצל 2 מטפלים ולא באמת היו תוצאות — אצלך כבר מהטיפול הראשון אני מרגיש תוצאות.",
     },
   ],
   theme: {

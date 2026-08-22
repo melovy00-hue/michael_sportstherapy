@@ -176,26 +176,6 @@ document.addEventListener('DOMContentLoaded', () => {
     contactObserver.observe(contactSection);
   }
 
-  // Testimonials carousel
-  const testimonialTrack = document.getElementById('testimonial-track');
-  const testimonialPrev = document.getElementById('testimonial-prev');
-  const testimonialNext = document.getElementById('testimonial-next');
-  if (testimonialTrack) {
-    const slides = Array.from(testimonialTrack.querySelectorAll('.testimonial-slide'));
-    let testimonialIndex = 0;
-    const showTestimonial = (index: number) => {
-      slides.forEach((el, i) => el.classList.toggle('hidden', i !== index));
-    };
-    testimonialPrev?.addEventListener('click', () => {
-      testimonialIndex = (testimonialIndex - 1 + slides.length) % slides.length;
-      showTestimonial(testimonialIndex);
-    });
-    testimonialNext?.addEventListener('click', () => {
-      testimonialIndex = (testimonialIndex + 1) % slides.length;
-      showTestimonial(testimonialIndex);
-    });
-  }
-
   // Intake form - build a WhatsApp message from the entered details
   const contactForm = document.getElementById('contact-form') as HTMLFormElement;
   if (contactForm) {
