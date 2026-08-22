@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Base Styles - Professional Insurance Agent Site */
+/* Base Styles */
 @layer base {
   html {
     font-family: 'Assistant', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -99,21 +99,11 @@
 
   @keyframes cta-pulse {
     0%, 100% {
-      box-shadow: 0 4px 15px rgba(4, 107, 210, 0.3);
+      box-shadow: 0 4px 15px rgba(13, 148, 136, 0.3);
     }
     50% {
-      box-shadow: 0 4px 25px rgba(4, 107, 210, 0.55), 0 0 40px rgba(4, 107, 210, 0.2);
+      box-shadow: 0 4px 25px rgba(13, 148, 136, 0.55), 0 0 40px rgba(13, 148, 136, 0.2);
     }
-  }
-
-  /* Popular service styles */
-  .service-popular {
-    @apply border-primary-200 bg-primary-50/30;
-  }
-
-  .popular-badge {
-    @apply inline-block mr-2 px-2 py-0.5 text-xs font-medium
-           bg-primary-100 text-primary-700 rounded-full;
   }
 
   .cta-button-secondary {
@@ -180,47 +170,9 @@
     @apply px-5 pb-3 pt-0;
   }
 
-  /* Accordion Videos */
-  .accordion-videos {
-    @apply flex gap-3 px-5 pb-5 overflow-x-auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-
-  .accordion-videos::-webkit-scrollbar {
-    display: none;
-  }
-
-  .accordion-video-card {
-    @apply flex-shrink-0 cursor-pointer;
-    width: 140px;
-  }
-
-  @media (min-width: 640px) {
-    .accordion-video-card {
-      width: 160px;
-    }
-  }
-
-  .accordion-video-thumb {
-    @apply relative rounded-xl overflow-hidden aspect-[9/16] bg-slate-100;
-  }
-
-  .accordion-video-thumb img {
-    @apply w-full h-full object-cover;
-  }
-
-  .accordion-video-play {
-    @apply absolute inset-0 flex items-center justify-center
-           bg-black/30 opacity-0 transition-opacity duration-200;
-  }
-
-  .accordion-video-card:hover .accordion-video-play {
-    @apply opacity-100;
-  }
-
-  .accordion-video-title {
-    @apply block text-xs text-slate-600 mt-2 leading-snug line-clamp-2 text-right;
+  .accordion-video {
+    @apply w-full max-w-[220px] rounded-xl bg-black;
+    aspect-ratio: 9 / 16;
   }
 
   .service-icon {
@@ -372,114 +324,6 @@
     @apply text-xs text-slate-500 mt-1.5 leading-relaxed line-clamp-2;
   }
 
-  /* Promo Video Section */
-  .promo-video-vertical {
-    @apply relative overflow-hidden rounded-3xl shadow-2xl;
-    width: 280px;
-    aspect-ratio: 9 / 16;
-    border: 3px solid rgba(255, 255, 255, 0.1);
-  }
-
-  @media (min-width: 768px) {
-    .promo-video-vertical {
-      width: 340px;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .promo-video-vertical {
-      width: 380px;
-    }
-  }
-
-  .promo-video-thumb-wrapper {
-    @apply cursor-pointer;
-  }
-
-  .promo-play-overlay {
-    @apply absolute inset-0 flex flex-col items-center justify-center z-10 transition-all duration-300;
-    background: rgba(0, 0, 0, 0.25);
-  }
-
-  .promo-video-thumb-wrapper:hover .promo-play-overlay {
-    background: rgba(0, 0, 0, 0.4);
-  }
-
-  .promo-play-button {
-    @apply flex items-center justify-center rounded-full transition-all duration-300;
-    width: 72px;
-    height: 72px;
-    background: rgba(4, 107, 210, 0.85);
-    backdrop-filter: blur(8px);
-    box-shadow: 0 8px 32px rgba(4, 107, 210, 0.4);
-  }
-
-  .promo-video-thumb-wrapper:hover .promo-play-button {
-    transform: scale(1.1);
-    background: rgba(4, 107, 210, 1);
-    box-shadow: 0 12px 40px rgba(4, 107, 210, 0.5);
-  }
-
-  .promo-play-label {
-    @apply text-white font-semibold text-sm mt-3 tracking-wide;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
-  }
-
-  /* Partners Logo Marquee */
-  .partners-marquee-wrapper {
-    @apply relative;
-    direction: ltr;
-    overflow: visible;
-    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-  }
-
-  .partners-marquee-track {
-    @apply flex items-center;
-    gap: 4rem;
-    width: max-content;
-    animation: marquee 35s linear infinite;
-  }
-
-  .partners-marquee-wrapper:hover .partners-marquee-track {
-    animation-play-state: paused;
-  }
-
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
-  }
-
-  .partner-logo {
-    @apply flex items-center justify-center
-           w-[130px] h-[72px]
-           md:w-[150px] md:h-[80px]
-           flex-shrink-0;
-    overflow: visible;
-  }
-
-  .partner-logo img {
-    @apply max-w-full max-h-full object-contain;
-    filter: grayscale(100%) opacity(0.5);
-    transition: filter 0.3s ease;
-    pointer-events: none;
-  }
-
-  .partner-logo:hover img {
-    filter: grayscale(60%) opacity(0.7);
-  }
-
-  /* Footer Legal Disclaimer */
-  .footer-disclaimer summary::-webkit-details-marker,
-  .footer-disclaimer summary::marker {
-    display: none;
-    content: '';
-  }
-
-  .footer-disclaimer[open] .footer-disclaimer-chevron {
-    transform: rotate(180deg);
-  }
-
   .shorts-scroll-hint {
     @apply text-center mt-3 sm:mt-4;
   }
@@ -518,66 +362,18 @@
     @apply bg-white p-4 rounded-2xl border-2 border-slate-100 inline-block;
   }
 
-  /* Video Lightbox Modal */
-  .video-modal {
-    @apply fixed inset-0 z-[100] flex items-center justify-center p-4;
+  /* Hero background: real photo when /hero.jpg exists, gradient fallback otherwise */
+  .hero-bg {
+    background-image: url('/hero.jpg'), linear-gradient(135deg, #0d9488 0%, #0a655e 45%, #1e293b 100%);
+    background-size: cover;
+    background-position: center 20%;
   }
 
-  .video-modal-backdrop {
-    @apply absolute inset-0 bg-black/80 backdrop-blur-sm;
-  }
-
-  .video-modal-content {
-    @apply relative w-full max-w-sm animate-scale-in;
-  }
-
-  .video-modal-close {
-    @apply absolute -top-12 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full
-           bg-white/20 hover:bg-white/30
-           flex items-center justify-center
-           text-white transition-all duration-200 z-10;
-  }
-
-  .video-modal-frame {
-    @apply relative w-full rounded-3xl overflow-hidden shadow-2xl;
-    aspect-ratio: 9 / 16;
-  }
-
-  .video-modal-frame iframe {
-    @apply absolute inset-0 w-full h-full;
-  }
-
-  /* Cookie Notice Banner */
-  .cookie-banner {
-    @apply fixed bottom-0 left-0 right-0 z-[90]
-           bg-slate-800/90 backdrop-blur-sm
-           p-3
-           animate-slide-up;
-    padding-bottom: calc(0.75rem + env(safe-area-inset-bottom));
-  }
-
-  .cookie-banner.hidden {
-    display: none;
-  }
-
-  .cookie-banner-content {
-    @apply max-w-4xl mx-auto flex items-center justify-between gap-3;
-  }
-
-  .cookie-banner-text {
-    @apply text-white/80 text-xs leading-relaxed;
-  }
-
-  .cookie-link {
-    @apply text-primary-300 hover:text-primary-200 underline underline-offset-2;
-  }
-
-  .cookie-btn {
-    @apply px-4 py-1.5 rounded-lg font-medium text-xs transition-all duration-200 flex-shrink-0;
-  }
-
-  .cookie-btn-accept {
-    @apply bg-white/20 hover:bg-white/30 text-white;
+  /* Profile avatar: real photo when /profile.jpg exists, gradient initial fallback otherwise */
+  .profile-avatar {
+    background-image: url('/profile.jpg'), linear-gradient(135deg, #0d9488, #f97316);
+    background-size: cover;
+    background-position: center 15%;
   }
 }
 
@@ -681,7 +477,6 @@
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  .partners-marquee-track { animation: none; }
 }
 
 .animate-fade-in-up {

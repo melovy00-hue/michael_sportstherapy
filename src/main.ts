@@ -71,84 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Accordion video cards - open YouTube Short in modal
-  document.querySelectorAll('.accordion-video-card').forEach((card) => {
-    card.addEventListener('click', () => {
-      const videoId = card.getAttribute('data-video-id');
-      if (!videoId) return;
-
-      // Create video modal
-      const modal = document.createElement('div');
-      modal.className = 'video-modal';
-      modal.innerHTML = `
-        <div class="video-modal-backdrop"></div>
-        <div class="video-modal-content">
-          <button class="video-modal-close" aria-label="סגור">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-          </button>
-          <div class="video-modal-frame">
-            <iframe
-              src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1"
-              title="Video"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          </div>
-        </div>
-      `;
-      document.body.appendChild(modal);
-      document.body.style.overflow = 'hidden';
-
-      const closeVideoModal = () => {
-        modal.remove();
-        document.body.style.overflow = '';
-      };
-
-      modal.querySelector('.video-modal-backdrop')?.addEventListener('click', closeVideoModal);
-      modal.querySelector('.video-modal-close')?.addEventListener('click', closeVideoModal);
-      document.addEventListener('keydown', function handler(e) {
-        if (e.key === 'Escape') {
-          closeVideoModal();
-          document.removeEventListener('keydown', handler);
-        }
-      });
-
-      trackEvent('video_play', { label: videoId });
-    });
-  });
-
-  // Promo video thumbnail - play inline inside the container
-  const promoContainer = document.getElementById('promo-video-container') as HTMLElement;
-  const promoOverlay = document.getElementById('promo-play-overlay') as HTMLElement;
-  if (promoContainer && promoOverlay) {
-    const playPromoInline = () => {
-      const videoId = promoContainer.getAttribute('data-video-id');
-      if (!videoId) return;
-
-      promoContainer.innerHTML = `
-        <iframe
-          src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1"
-          title="תדמית עצמית"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          style="position:absolute;inset:0;width:100%;height:100%;border-radius:inherit;"
-        ></iframe>
-      `;
-
-      trackEvent('video_play', { label: 'promo_video' });
-    };
-
-    promoOverlay.addEventListener('click', playPromoInline);
-    promoOverlay.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        playPromoInline();
-      }
-    });
-  }
-
   // Scroll-reveal: animate sections as they enter the viewport
   const revealObserver = new IntersectionObserver(
     (entries) => {
@@ -184,13 +106,11 @@ document.addEventListener('DOMContentLoaded', () => {
       'BEGIN:VCARD',
       'VERSION:3.0',
       `FN:${config.profile.name}`,
-      `N:ישראלי;ישראל;;;`,
-      `ORG:שם העסק שלך`,
+      `N:;${config.profile.name};;;`,
+      `ORG:מיכאל - ספורטתרפיה`,
       `TITLE:${config.profile.title}`,
       `TEL;TYPE=CELL:${config.contact.phone.replace(/-/g, '')}`,
       `EMAIL:${config.contact.email}`,
-      'URL:https://example.com',
-      'ADR;TYPE=WORK:;;רחוב ומספר;עיר;;מיקוד;ישראל',
       'END:VCARD'
     ].join('\n');
 
@@ -256,32 +176,25 @@ document.addEventListener('DOMContentLoaded', () => {
     contactObserver.observe(contactSection);
   }
 
-  // Track dead clicks on partner logos area (diagnostic)
-  document.querySelector('.partners-marquee-wrapper')?.addEventListener('click', () => {
-    trackEvent('dead_click_attempt', { label: 'partner_logos' });
-  });
+  // Intake form - build a WhatsApp message from the entered details
+  const contactForm = document.getElementById('contact-form') as HTMLFormElement;
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = (document.getElementById('cf-name') as HTMLInputElement).value.trim();
+      const phone = (document.getElementById('cf-phone') as HTMLInputElement).value.trim();
+      const message = (document.getElementById('cf-message') as HTMLTextAreaElement).value.trim();
 
-  // Cookie Notice Banner - informational only, non-blocking
-  const cookieBanner = document.getElementById('cookie-banner');
-  const cookieDismiss = document.getElementById('cookie-dismiss');
+      const lines = [
+        `היי מיכאל, השארתי פרטים באתר לתיאום טיפול.`,
+        `שם: ${name}`,
+        `טלפון: ${phone}`,
+      ];
+      if (message) lines.push(`הודעה: ${message}`);
 
-  if (cookieBanner) {
-    const COOKIE_SEEN_KEY = 'site_cookie_seen';
-    const alreadySeen = localStorage.getItem(COOKIE_SEEN_KEY);
-
-    if (!alreadySeen) {
-      // Show notice after short delay
-      setTimeout(() => {
-        cookieBanner.classList.remove('hidden');
-      }, 2000);
-    }
-
-    function dismissBanner() {
-      if (!cookieBanner || cookieBanner.classList.contains('hidden')) return;
-      cookieBanner.classList.add('hidden');
-      localStorage.setItem(COOKIE_SEEN_KEY, 'seen');
-    }
-
-    cookieDismiss?.addEventListener('click', dismissBanner);
+      const text = encodeURIComponent(lines.join('\n'));
+      trackEvent('generate_lead', { label: 'contact_form', method: 'whatsapp' });
+      window.open(`https://wa.me/${config.contact.whatsapp}?text=${text}`, '_blank', 'noopener,noreferrer');
+    });
   }
 });

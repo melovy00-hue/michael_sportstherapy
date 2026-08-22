@@ -1,7 +1,7 @@
 {
   "name": "landing-template",
   "version": "1.0.0",
-  "description": "Linktree-style landing page for insurance agent",
+  "description": "Landing page for Michael - sports therapist",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -12,7 +12,7 @@
   "keywords": [
     "linktree",
     "landing-page",
-    "insurance",
+    "sports-therapy",
     "portfolio"
   ],
   "author": "",

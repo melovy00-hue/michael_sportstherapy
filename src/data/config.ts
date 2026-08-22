@@ -9,6 +9,7 @@ export interface Link {
   description?: string;
   anchor?: string;
   videos?: YouTubeShort[];
+  localVideo?: string;
 }
 
 export interface SocialLink {
@@ -21,6 +22,11 @@ export interface YouTubeShort {
   id: string;
   title: string;
   description: string;
+}
+
+export interface Testimonial {
+  name: string;
+  quote: string;
 }
 
 export interface Config {
@@ -38,6 +44,7 @@ export interface Config {
   links: Link[];
   socialLinks: SocialLink[];
   youtubeShorts: YouTubeShort[];
+  testimonials: Testimonial[];
   theme: {
     primaryColor: string;
     backgroundColor: string;
@@ -46,60 +53,67 @@ export interface Config {
 
 export const config: Config = {
   profile: {
-    name: "ישראל ישראלי",
-    title: "התחום המקצועי שלך - שורת תיאור קצרה",
-    bio: "משפט אחד שמסביר מה אתה עושה ולמה כדאי לדבר איתך - בגובה העיניים",
-    image: "/profile.png", // put your photo in public/profile.png
+    name: "מיכאל",
+    title: "ספורטתרפיסט | דיקור יבש, טיפול ידני וקינזיותייפינג",
+    bio: "מלווה מתאמנים ואנשים עם אורח חיים פעיל בטיפול בכאב ובשיקום — בקליניקה באשקלון או עד הבית שלכם.",
+    image: "/profile.jpg",
   },
   contact: {
-    phone: "050-000-0000",
-    whatsapp: "972500000000", // international format, no + sign
-    email: "hello@example.com",
+    phone: "054-269-0370",
+    whatsapp: "972542690370", // international format, no + sign
+    email: "melovy00@gmail.com",
   },
   links: [
     {
-      title: "שירות ראשון",
+      title: "כאבי גב",
       url: "#contact",
-      icon: "shield",
-      anchor: "service1",
-      description: "פסקה קצרה שמסבירה את השירות: מה הלקוח מקבל, למה זה חשוב, ומה התוצאה עבורו.",
-      videos: [
-        { id: "YOUTUBE_ID_1", title: "כותרת סרטון קצר", description: "" },
-      ],
-    },
-    {
-      title: "שירות שני",
-      url: "#contact",
-      icon: "wallet",
-      anchor: "service2",
-      description: "פסקה קצרה שמסבירה את השירות: מה הלקוח מקבל, למה זה חשוב, ומה התוצאה עבורו.",
+      icon: "bone",
+      anchor: "back-pain",
+      description: "אבחון מקור הכאב וטיפול ידני ממוקד, בשילוב דיקור יבש וקינזיותייפינג בהתאם לצורך — כדי לחזור לתפקוד מלא, לא רק להקל לרגע.",
       videos: [],
     },
     {
-      title: "שירות שלישי",
+      title: "כאבי כתפיים",
       url: "#contact",
-      icon: "users",
-      anchor: "service3",
-      description: "פסקה קצרה שמסבירה את השירות: מה הלקוח מקבל, למה זה חשוב, ומה התוצאה עבורו.",
+      icon: "move",
+      anchor: "shoulder-pain",
+      description: "טיפול בהגבלות תנועה, מתחים ותפוסים באזור הכתף והצוואר — פופולרי במיוחד אצל מי שמתאמן עם משקולות או ספורטי חזרה.",
+      videos: [],
+      localVideo: "/videos/shoulder-tape.mp4",
+    },
+    {
+      title: "שיקום מפציעות ספורט",
+      url: "#contact",
+      icon: "activity",
+      anchor: "sports-injury",
+      description: "ליווי מובנה מרגע הפציעה ועד חזרה בטוחה לאימונים — נקעים, מתיחות ופציעות חוזרות שמפריעות לך להתאמן כרגיל.",
+      videos: [],
+    },
+    {
+      title: "שימור ומניעת פציעות",
+      url: "#contact",
+      icon: "shield",
+      anchor: "prevention",
+      description: "בדיקה תפקודית וטיפול תקופתי למי שמתאמן באופן קבוע ורוצה למנוע פציעות לפני שהן קורות, ולא רק לטפל אחרי.",
       videos: [],
     },
   ],
   socialLinks: [
     {
       platform: "instagram",
-      url: "https://instagram.com/your_handle",
+      url: "https://instagram.com/michael_sportstherapy",
       icon: "instagram",
     },
   ],
-  youtubeShorts: [
+  youtubeShorts: [],
+  testimonials: [
     {
-      id: "YOUTUBE_ID_1",
-      title: "כותרת סרטון קצר",
-      description: "משפט תיאור קצר",
+      name: "מישל גרשקוביץ",
+      quote: "היום עשיתי אימון ראשון אחרי הטיפול וכבר הצלחתי לעלות במשקלים וכלל בלי כאב כמו לפני. הייתי קודם אצל 2 מטפלים ולא באמת היו תוצאות — אצלך כבר מהטיפול הראשון אני מרגיש תוצאות.",
     },
   ],
   theme: {
-    primaryColor: "#046bd2",
-    backgroundColor: "#f9fafb",
+    primaryColor: "#0d9488",
+    backgroundColor: "#faf9f7",
   },
 };
