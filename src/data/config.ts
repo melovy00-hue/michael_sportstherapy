@@ -127,6 +127,9 @@ export const config: Config = {
     { type: "image", src: "/gallery/lowback-rotation-stretch.jpg", alt: "מתיחת גב תחתון בסיבוב" },
     { type: "video", src: "/videos/shoulder-tape.mp4", poster: "/gallery/shoulder-tape-poster.jpg", alt: "טייפינג לכתף" },
     { type: "image", src: "/gallery/michael-clinic.jpg", alt: "מיכאל בקליניקה" },
+    { type: "video", src: "/videos/shoulder-strength-test.mp4", poster: "/gallery/shoulder-strength-test-poster.jpg", alt: "בדיקת כוח כתף" },
+    { type: "video", src: "/videos/upper-back-tissue-massage.mp4", poster: "/gallery/upper-back-tissue-massage-poster.jpg", alt: "עיסוי רקמות גב עליון" },
+    { type: "video", src: "/videos/glute-strength-test.mp4", poster: "/gallery/glute-strength-test-poster.jpg", alt: "בדיקת כוח ישבן" },
   ],
   testimonials: [
     {
