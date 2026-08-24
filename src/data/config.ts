@@ -116,20 +116,12 @@ export const config: Config = {
   youtubeShorts: [],
   galleryItems: [
     { type: "image", src: "/gallery/cupping-back.jpg", alt: "טיפול כוסות רוח לגב" },
-    { type: "video", src: "/videos/shoulder-rom-test.mp4", poster: "/gallery/shoulder-rom-test-poster.jpg", alt: "בדיקת טווח תנועה בכתף" },
-    { type: "image", src: "/gallery/kinesio-tape-shoulder.jpg", alt: "הדבקת קינזיותייפ בכתף" },
-    { type: "image", src: "/gallery/manual-therapy-lowback.jpg", alt: "טיפול ידני בגב תחתון" },
-    { type: "video", src: "/videos/straight-leg-stretch.mp4", poster: "/gallery/straight-leg-stretch-poster.jpg", alt: "מתיחת רגל ישרה" },
-    { type: "image", src: "/gallery/knee-to-chest-stretch.jpg", alt: "מתיחת ברך לחזה" },
-    { type: "image", src: "/gallery/neck-massage-homevisit.jpg", alt: "עיסוי צוואר בביקור בית" },
-    { type: "video", src: "/videos/cupping-back.mp4", poster: "/gallery/cupping-back-poster.jpg", alt: "הנחת כוסות רוח בגב" },
-    { type: "image", src: "/gallery/shoulder-assessment.jpg", alt: "בדיקת כתף בישיבה" },
-    { type: "image", src: "/gallery/lowback-rotation-stretch.jpg", alt: "מתיחת גב תחתון בסיבוב" },
     { type: "video", src: "/videos/shoulder-tape.mp4", poster: "/gallery/shoulder-tape-poster.jpg", alt: "טייפינג לכתף" },
-    { type: "image", src: "/gallery/michael-clinic.jpg", alt: "מיכאל בקליניקה" },
     { type: "video", src: "/videos/shoulder-strength-test.mp4", poster: "/gallery/shoulder-strength-test-poster.jpg", alt: "בדיקת כוח כתף" },
+    { type: "video", src: "/videos/aviv-assessment.mp4", poster: "/gallery/aviv-assessment-poster.jpg", alt: "אבחון מקור הכאב" },
     { type: "video", src: "/videos/upper-back-tissue-massage.mp4", poster: "/gallery/upper-back-tissue-massage-poster.jpg", alt: "עיסוי רקמות גב עליון" },
-    { type: "video", src: "/videos/glute-strength-test.mp4", poster: "/gallery/glute-strength-test-poster.jpg", alt: "בדיקת כוח ישבן" },
+    { type: "video", src: "/videos/sivan-cupping-back.mp4", poster: "/gallery/sivan-cupping-back-poster.jpg", alt: "טיפול כוסות רוח לגב" },
+    { type: "image", src: "/gallery/michael-clinic.jpg", alt: "מיכאל בקליניקה" },
   ],
   testimonials: [
     {
