@@ -184,7 +184,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const rowItems = Array.from(galleryRow.querySelectorAll<HTMLElement>('.gallery-item'));
     let rowIndex = 0;
     const scrollToRowItem = (index: number) => {
-      rowIndex = Math.max(0, Math.min(index, rowItems.length - 1));
+      const len = rowItems.length;
+      rowIndex = ((index % len) + len) % len;
       rowItems[rowIndex]?.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
     };
     galleryScrollPrev?.addEventListener('click', () => scrollToRowItem(rowIndex - 1));

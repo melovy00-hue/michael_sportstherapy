@@ -374,6 +374,8 @@
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     padding: 0.25rem 3rem;
+    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
   }
 
   .gallery-row::-webkit-scrollbar {
@@ -382,15 +384,16 @@
 
   .gallery-scroll-arrow {
     @apply absolute top-1/2 -translate-y-1/2 z-10
-           w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white
-           border border-slate-200 shadow-md
+           w-10 h-10 sm:w-11 sm:h-11 rounded-full
+           bg-gradient-to-br from-primary-500 to-accent-500
+           text-white shadow-lg shadow-primary-600/30
            flex items-center justify-center
-           text-slate-600 hover:text-primary-600 hover:border-primary-200
            transition-all duration-200;
   }
 
   .gallery-scroll-arrow:hover {
-    transform: translateY(-50%) scale(1.06);
+    transform: translateY(-50%) scale(1.08);
+    @apply shadow-xl shadow-primary-600/40;
   }
 
   .gallery-scroll-arrow-right {
@@ -410,7 +413,7 @@
 
   .gallery-item {
     @apply relative block flex-shrink-0 aspect-square rounded-2xl overflow-hidden bg-slate-100
-           border border-slate-100/80 shadow-sm hover:shadow-lg
+           border-2 border-transparent shadow-sm hover:shadow-lg hover:border-primary-200
            transition-all duration-300;
     width: 150px;
     scroll-snap-align: start;

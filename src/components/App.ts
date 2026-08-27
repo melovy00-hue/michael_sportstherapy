@@ -226,7 +226,7 @@ export function renderApp(config: Config): string {
 
     <!-- Gallery Section -->
     ${config.galleryItems.length > 0 ? `
-    <section id="gallery" class="py-14 md:py-24 bg-white reveal">
+    <section id="gallery" class="py-14 md:py-24 bg-gradient-to-b from-slate-50/50 to-white reveal">
       <div class="max-w-5xl mx-auto px-4 sm:px-6">
         <div class="text-center mb-8 md:mb-12">
           <span class="inline-block px-4 py-1.5 bg-primary-50 text-primary-600 text-sm font-medium rounded-full mb-4">
