@@ -176,6 +176,21 @@ document.addEventListener('DOMContentLoaded', () => {
     contactObserver.observe(contactSection);
   }
 
+  // Treatment Gallery row scrolling (edge arrows)
+  const galleryRow = document.getElementById('gallery-row');
+  const galleryScrollPrev = document.getElementById('gallery-scroll-prev');
+  const galleryScrollNext = document.getElementById('gallery-scroll-next');
+  if (galleryRow) {
+    const rowItems = Array.from(galleryRow.querySelectorAll<HTMLElement>('.gallery-item'));
+    let rowIndex = 0;
+    const scrollToRowItem = (index: number) => {
+      rowIndex = Math.max(0, Math.min(index, rowItems.length - 1));
+      rowItems[rowIndex]?.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+    };
+    galleryScrollPrev?.addEventListener('click', () => scrollToRowItem(rowIndex - 1));
+    galleryScrollNext?.addEventListener('click', () => scrollToRowItem(rowIndex + 1));
+  }
+
   // Treatment Gallery lightbox
   const galleryButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('.gallery-item'));
   const galleryModal = document.getElementById('gallery-modal');

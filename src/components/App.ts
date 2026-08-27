@@ -240,23 +240,33 @@ export function renderApp(config: Config): string {
           </p>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4">
-          ${config.galleryItems.map((item, i) => `
-            <button
-              class="gallery-item"
-              data-gallery-index="${i}"
-              data-type="${item.type}"
-              data-src="${item.src}"
-              aria-label="${item.alt}"
-            >
-              <img src="${item.type === 'video' ? item.poster : item.src}" alt="${item.alt}" loading="lazy" />
-              ${item.type === 'video' ? `
-              <span class="gallery-play">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              </span>
-              ` : ''}
-            </button>
-          `).join('')}
+        <div class="gallery-row-wrapper">
+          <button id="gallery-scroll-prev" class="gallery-scroll-arrow gallery-scroll-arrow-right" aria-label="הקודם">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+
+          <div id="gallery-row" class="gallery-row">
+            ${config.galleryItems.map((item, i) => `
+              <button
+                class="gallery-item"
+                data-gallery-index="${i}"
+                data-type="${item.type}"
+                data-src="${item.src}"
+                aria-label="${item.alt}"
+              >
+                <img src="${item.type === 'video' ? item.poster : item.src}" alt="${item.alt}" loading="lazy" />
+                ${item.type === 'video' ? `
+                <span class="gallery-play">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </span>
+                ` : ''}
+              </button>
+            `).join('')}
+          </div>
+
+          <button id="gallery-scroll-next" class="gallery-scroll-arrow gallery-scroll-arrow-left" aria-label="הבא">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
         </div>
       </div>
     </section>
