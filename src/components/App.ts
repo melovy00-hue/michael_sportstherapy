@@ -245,11 +245,11 @@ export function renderApp(config: Config): string {
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
           </button>
 
-          <div id="gallery-row" class="gallery-row">
-            ${config.galleryItems.map((item, i) => `
+          <div id="gallery-row" class="gallery-row" data-item-count="${config.galleryItems.length}">
+            ${[0, 1, 2].map(() => config.galleryItems.map((item, i) => `
               <button
                 class="gallery-item"
-                data-gallery-index="${i}"
+                data-logical-index="${i}"
                 data-type="${item.type}"
                 data-src="${item.src}"
                 aria-label="${item.alt}"
@@ -261,7 +261,7 @@ export function renderApp(config: Config): string {
                 </span>
                 ` : ''}
               </button>
-            `).join('')}
+            `).join('')).join('')}
           </div>
 
           <button id="gallery-scroll-next" class="gallery-scroll-arrow gallery-scroll-arrow-left" aria-label="הבא">
@@ -300,18 +300,31 @@ export function renderApp(config: Config): string {
             מה אומרים המטופלים
           </h2>
         </div>
-        <div class="grid gap-6">
-          ${config.testimonials.map((t) => `
-            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-md border border-slate-100">
-              <div class="flex items-center gap-4 mb-4">
-                <div class="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold text-lg bg-gradient-to-br from-primary-500 to-accent-500">
-                  ${t.name.trim().charAt(0)}
+
+        <div class="gallery-row-wrapper">
+          <button id="testimonial-scroll-prev" class="gallery-scroll-arrow gallery-scroll-arrow-right" aria-label="הקודם">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+
+          <div class="testimonial-viewport">
+            <div id="testimonial-track" class="testimonial-track">
+              ${config.testimonials.map((t, i) => `
+                <div class="testimonial-card${i === 0 ? ' is-center' : ''}" data-index="${i}">
+                  <div class="flex items-center gap-4 mb-4">
+                    <div class="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold text-lg bg-gradient-to-br from-primary-500 to-accent-500">
+                      ${t.name.trim().charAt(0)}
+                    </div>
+                    <h4 class="font-semibold text-slate-800">${t.name}</h4>
+                  </div>
+                  <p class="text-slate-600 text-base leading-relaxed">${t.quote}</p>
                 </div>
-                <h4 class="font-semibold text-slate-800">${t.name}</h4>
-              </div>
-              <p class="text-slate-600 text-base leading-relaxed">${t.quote}</p>
+              `).join('')}
             </div>
-          `).join('')}
+          </div>
+
+          <button id="testimonial-scroll-next" class="gallery-scroll-arrow gallery-scroll-arrow-left" aria-label="הבא">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
         </div>
       </div>
     </section>
