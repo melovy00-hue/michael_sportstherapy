@@ -121,7 +121,7 @@ export function renderApp(config: Config): string {
             הבעיות שאני הכי הרבה מטפל בהן
           </h2>
           <p class="text-slate-500 text-base md:text-lg max-w-xl mx-auto">
-            אבחון מדויק וטיפול מותאם אישית — בקליניקה באשקלון או עד הבית שלכם
+            אבחון מדויק וטיפול מותאם אישית, בקליניקה באשקלון או עד הבית שלכם
           </p>
         </div>
 
@@ -205,15 +205,15 @@ export function renderApp(config: Config): string {
             <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-800 mb-2">
               קצת עליי
             </h2>
-            <p class="text-primary-600 font-medium text-base md:text-lg mb-4">מיכאל, ספורטתרפיסט</p>
+            <p class="text-primary-600 font-medium text-base md:text-lg mb-4">מיכאל | ספורטתרפיסט</p>
             <p class="text-slate-600 text-base md:text-lg leading-relaxed mb-4">
-              בוגר לימודי ספורטתרפיה ועיסוי רפואי (מכללת רידמן), עם תעודות בעיסוי אורתופדי, עיסוי ספורטאים, דיקור יבש ואורתופדי וקינזיולוגיה יישומית. 5 שנות ניסיון בדיקור יבש, וניסיון בעבודה בקופות חולים — לצד אלף מטופלים ומעלה שליוויתי עד היום.
+              בוגר לימודי ספורטתרפיה ועיסוי רפואי (מכללת רידמן), עם תעודות בעיסוי אורתופדי, עיסוי ספורטאים, דיקור יבש ואורתופדי וקינזיולוגיה יישומית. 5 שנות ניסיון בטיפולים, וניסיון בעבודה בקופות חולים, לצד אלף מטופלים ומעלה שליוויתי עד היום.
             </p>
             <p class="text-slate-600 text-base md:text-lg leading-relaxed mb-4">
-              אני מטפל באנשים שמנהלים אורח חיים פעיל ומתאמנים — לא רק בספורטאים מקצועיים — ומאמין בשילוב בין אבחון מדויק, טיפול ידני, קינזיותייפינג ודיקור יבש בהתאם למה שהגוף שלכם באמת צריך.
+              אני מטפל באנשים שמנהלים אורח חיים פעיל ומתאמנים, לא רק בספורטאים מקצועיים, ומאמין בשילוב בין אבחון מדויק, טיפול ידני, קינזיותייפינג ודיקור יבש בהתאם למה שהגוף שלכם באמת צריך.
             </p>
             <p class="text-slate-600 text-base md:text-lg leading-relaxed mb-6">
-              זמין גם בקליניקה באשקלון וגם בהגעה עד הבית באזור אשקלון (עד כ-30 דקות נסיעה) — בואו נדבר ונבין מה נכון לכם.
+              זמין גם בקליניקה באשקלון וגם בהגעה עד הבית באזור אשקלון (עד כ-30 דקות נסיעה), בואו נדבר ונבין מה נכון לכם.
             </p>
             <a href="#contact" class="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-semibold transition-colors">
               <span>בואו נדבר</span>
@@ -383,7 +383,7 @@ export function renderApp(config: Config): string {
           </div>
           <button type="submit"
             class="w-full py-4 px-6 bg-primary-600 hover:bg-primary-700 text-white rounded-2xl font-bold text-lg shadow-lg shadow-primary-600/30 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-            שליחה — אחזור אליכם
+            שליחה, אחזור אליכם
           </button>
           <p class="text-slate-400 text-xs">השליחה תפתח הודעת וואטסאפ עם הפרטים שמילאתם, ישירות אליי</p>
         </form>
